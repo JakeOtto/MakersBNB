@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/static/style.css" >
+    <head>
+        <title>MakersBnB</title>
+    </head>
+    <body>
+        <ul>
+            <li><a href="/logout">Log out</a></li>
+            <li><a href="/requests">Requests</a></li>
+            <li><a href="/spaces">Spaces</a></li>
+        </ul>
+        <br>
+        <h1>Book a Space</h1>
+        <p>Welcome to your next adventure with MakersBnB! Our carefully curated spaces are waiting to be your home away from home.</p>
+            <p>
+            <a href = "/spaces/new"><input type = 'Submit' value = 'List a Space'></a>
+            </p>
+            <div class="t-space-container">
+            {% for space in spaces %}
+                    
+                <div class="t-space">
+                    <h3>{{space.name}}</h3>
+                        <p>{{space.description}}</p>
+                        <a name="name" href="/spaces/{{space.id}}">Book now</a>
+                </div>
+            {% endfor %}
+            </div>
+    </body>
+</html>

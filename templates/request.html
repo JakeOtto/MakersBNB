@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Your requests | MakersBnB</title>
+<head>
+    <link rel="stylesheet" href="/static/style.css" >
+    <style>
+        /* CSS styles go here */
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .column {
+            flex: 1;
+            text-align: center;
+            border: 1px solid #000; /* Add a border to the columns */
+            padding: 10px; /* Add some padding for spacing */
+        }
+        .entry {
+            border-bottom: 1px solid #000;
+            padding: 5px 0;
+        }
+        .entry button {
+            display: block;
+            width: 100%;
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/logout">Log out</a></li>
+        <li><a href="/requests">Requests</a></li>
+        <li><a href="/spaces">Spaces</a></li>
+    </ul>
+    <br>
+    <h1>Requests</h1>
+    <form action="/load_request" method="POST">
+    <p>Showing results for: {{ session.get("username") }}</p>
+
+    <div class="t-space-container">
+        <div class="t-space">
+
+    <!-- requests made -->
+    <h3>Requests I've made:</h3>
+    <div class="t-space-container">
+        <div class="t-space">
+
+            {% for request in requests %}
+            <div class="entry">
+                <button type="submit" name="request_id" value="{{ request.id }}">
+                <h3>{{ (space_repo.search_by_id(request.space_id)).name }}</h3>
+                {{request.requested_date}}
+                {% if request.status %}
+                <br> Accepted 
+                {% else %}
+                <br> Not accepted yet
+                {% endif %}
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </form>
+    
+    <form action="/load_owner_request" method="POST">
+    <!-- requests recieved -->
+    <h3>Requests I've recieved:</h3>
+    <div class="container">
+        <div class="column">
+            {% for owner_request in owner_requests %}
+            <div class="entry">
+                <button type="submit" name="owner_request_id" value="{{ owner_request.id }}">
+                <h3>{{ (space_repo.search_by_id(owner_request.space_id)).name }}</h3>
+                {{owner_request.requested_date}}
+                {% if owner_request.status %}
+                <br> Accepted 
+                {% else %}
+                <br> Not accepted yet
+                {% endif %}
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    </form>
+
+    <div class="back-button">
+        <br>
+        <a href="/spaces">
+            <img src="/static/icons8-back-arrow-50.png" width="40px" alt="button go back to previous page">
+        </a>
+    </div>
+
+</body>
+</html>

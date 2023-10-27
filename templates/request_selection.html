@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/static/style.css" >
+    <head>
+        <title>Request Handling</title>
+        <style>
+            /* CSS styles go here */
+            h1 {
+                text-align: center;
+            }
+            p {
+                text-align: center;
+            }
+            button {
+            display: block;
+            width: 100%;
+            padding: 5px;
+            text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a href="/logout"">Log out</a></li>
+            <li><a href="/requests">Requests</a></li>
+            <li><a href="/spaces">Spaces</a></li>
+        </ul>
+        <br>
+        <h1>{{ name }}</h1>
+        <div>
+            <p>Date Requested: {{ date }}</p>
+            <p>Username: {{ user }}</p>
+            <p>
+            <input type="submit" value="Approve">
+            </p>
+        </div>
+    </body>
+</html>

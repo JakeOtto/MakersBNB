@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/static/style.css" >
+    <head>
+        <title>List a Space | MakersBnB</title>
+    </head>
+    <body>
+        <ul>
+            <li><a href="/logout">Log out</a></li>
+            <li><a href="/requests">Requests</a></li>
+            <li><a href="/spaces">Spaces</a></li>
+        </ul>
+        <br>
+        <h1>List a space</h1>
+        <form action ="/spaces/new" method="post">
+        {%if errors%} 
+            
+            <p class = "t-errors">
+            There were errors with your submision: {{errors}}
+            </p>
+            
+        {%endif%}
+        
+        <p>
+        <label for = "name">Name</label>
+        </p>
+        <p>
+        <input type="text" name = "name"  id = "name">
+        </p>
+
+        <p>
+        <label for = "name">Description</label>
+        </p>
+        <p>
+        <input type="text" name = "description"  id = "description">
+        </p>
+        
+        <p>
+        <label for = "name">Price per night (£)</label><br>
+        <input type="number" name = "price"  id = "price" required>
+        </p>
+        
+        <p>
+        <label for = "name">Available from</label><br>
+        <input type="date" name = "available_from"  id = "available_from " required min="{{ min_date }}" max="{{ max_date }}">
+        </p>
+
+        <p>
+        <label for = "name">Available to</label><br>
+        <input type="date" name = "available_till"  id = "available_till" required>
+        </p>
+
+        <p>
+        <input type = 'Submit' value = 'List my Space'>
+        </p>
+
+        </form>
+
+        <div class="back-button">
+            <br>
+            <a href="/spaces">
+                <img src="/static/icons8-back-arrow-50.png" width="40px" alt="button go back to previous page">
+            </a>
+        </div>
+
+    </body>
+</html>

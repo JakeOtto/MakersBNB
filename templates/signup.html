@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Signup | MakersBnB</title>
+        <link rel="stylesheet" href="/static/style.css" >
+    </head>
+    <body>
+        <h1>Signup to MakersBnB</h1>
+        <form action="/signup" method="POST">
+            <!-- showing errors if there are any in the list -->
+            {% if errors %}
+            <p class="t-errors">
+            <b>There were errors with your submission:</b><br>
+            <!-- iterate through errors to display one error per line -->
+            {% for error in errors %}
+            {{ error }}<br>
+            {% endfor %}
+            </p>
+            {% endif %}
+        <h2>{{ message }}</h2>
+        <p>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" id="name">
+        </p>
+
+        <p>
+            <label for="username">Username</label><br>
+            <input type="text" name="username" id="username">
+        </p>
+
+        <p>
+            <label for="email">Email</label><br>
+            <input type="text" name="email" id="email">
+        </p>
+        
+        <p>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" id="password">
+        </p>
+      
+      <p>
+        <!-- `type` is submit here, to indicate it is a button -->
+        <!-- `value` is used as the button's text -->
+        <input type="submit" value="Signup to MarkersBnB">
+      </p>
+        </form>
+    </body>
+</html>

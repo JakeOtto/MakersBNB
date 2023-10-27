@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/static/style.css" >
+    <head>
+        <title>View space | MakersBnB</title>
+    </head>
+    <body>
+        <ul>
+            <li><a href="/logout">Log out</a></li>
+            <li><a href="/requests">Requests</a></li>
+            <li><a href="/spaces">Spaces</a></li>
+        </ul>
+        <br>
+        <h1>{{ space.name }}</h1>
+        <p class="price">Price per night: £{{ space.price }}</p>
+        <p class="description">{{ space.description }}</p>
+        
+        <form action="{{ url }}" method="POST">
+            <!-- user selects available date to book a space -->
+            <select name="booking_date" id="booking_date">
+                
+                {% for date in calendar %}
+                <!-- safe tells htm to not escape values as it's html code -->
+                {{ date|safe }}<br>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Send a booking request">
+            <p class="message">
+                {% if message %}
+                {{ message }}
+                {% endif %}
+            </p>
+        </form>
+
+        <div class="back-button">
+            <br>
+            <a href="/spaces">
+                <img src="/static/icons8-back-arrow-50.png" width="40px" alt="button go back to previous page">
+            </a>
+        </div>
+        
+    </body>
+</html>

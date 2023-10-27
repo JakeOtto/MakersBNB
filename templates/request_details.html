@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/static/style.css" >
+    <head>
+        <title>Request | MakersBnB</title>
+    </head>
+    <body>
+        <ul>
+            <li><a href="/logout">Log out</a></li>
+            <li><a href="/requests">Requests</a></li>
+            <li><a href="/spaces">Spaces</a></li>
+        </ul>
+        <br>
+        <h1>{{ space.name }}</h1>
+        <p>{{space.description}}</p>
+        <form action="/request_response" method="POST">
+        <div>
+            <p>Date Requested: {{ request.requested_date }}</p>
+            <p>From: {{ request_user.username }} ({{ request_user.name }})</p> 
+            <p>
+            {% if session.get("username") == request_user.username %} <!---Request user made-->
+            <button type="submit" name="action" value="{{ request.id }}-cancel">Cancel</button> 
+            {% elif request.status  %} <!---Request user received-->
+            <button type="submit" name="action" value="{{ request.id }}-revoke">Revoke</button>
+            {% else %}
+            <button type="submit" name="action" value="{{ request.id }}-approve">Approve</button>
+            </p>
+            {% endif %}
+        </div>
+        </form>
+
+        <div class="back-button">
+            <br>
+            <a href="/requests">
+                <img src="/static/icons8-back-arrow-50.png" width="40px" alt="button go back to previous page">
+            </a>
+        </div>
+
+    </body>
+</html>

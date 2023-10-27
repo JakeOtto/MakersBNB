@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/static/style.css">
+    
+<head>
+    <!--positioning and styling-->
+    <title>Login | MakersBnB</title>
+</head>
+<body>
+    <h1>Login to MakersBnB!</h1>
+        
+        <img src="/static/house-logo-20B5023FE2-seeklogo.com.png" alt="houseLogo" class="center">
+        
+        <!-- Form to collect address and password details  -->
+        <form action="/login" method="POST">
+            {% if errors %}
+            <p class="errors"> Details are incorrect. Try again!</p>
+            {% endif %}
+            <p>
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required>
+            </p>
+            <p>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required>
+            </p>
+            <!-- button to submit username and password  -->
+            <b>
+            <input type="submit" value="Login">
+            </b>
+        </form>
+        <!-- errors generated when login not valid -->
+
+</body>
+</html>
